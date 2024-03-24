@@ -6,4 +6,16 @@
     </style>
 
     <style name="Theme.PanjabBharti" parent="Base.Theme.PanjabBharti" />
+
+    <style name="CustomFilterButtonStyle" parent="Widget.AppCompat.Button">
+        <!-- Customize button properties here -->
+        <item name="android:background">@drawable/btn_bg_1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="fontFamily"></item>
+        <!-- Add any other customizations as needed -->
+    </style>
+
 </resources>

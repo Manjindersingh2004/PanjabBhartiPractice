@@ -79,8 +79,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/light_grey"
-                android:layout_marginVertical="10dp" />
-
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,21 +89,24 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Age"
+                    android:text="Date Of Birth"
                     android:paddingBottom="5dp"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/AgeRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:id="@+id/ageButton"
+                    style="@style/CustomFilterButtonStyle"
+                    android:text="SELECT DOB"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/light_grey"
-                android:layout_marginVertical="10dp" />
-
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,14 +115,28 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Panjabi Language Qualified"
+                    android:text="Is Panjabi Qualified"
                     android:paddingBottom="5dp"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/PanjabiRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Punjabi_yes_btn"
+                        android:text="Yes"
+                        style="@style/CustomFilterButtonStyle"/>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:id="@+id/Punjabi_no_btn"
+                        android:text="No"
+                        style="@style/CustomFilterButtonStyle"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 

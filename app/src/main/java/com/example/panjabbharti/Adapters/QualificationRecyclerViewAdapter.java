@@ -16,9 +16,6 @@ import java.util.ArrayList;
 
 public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<QualificationRecyclerViewAdapter.ViewHolder> {
 
-    QualificationRecyclerViewAdapter(){
-
-    }
 
     public QualificationRecyclerViewAdapter(ArrayList<String> arrayList, Context context) {
         this.arrayList = arrayList;
@@ -38,7 +35,7 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
     @Override
     public void onBindViewHolder(@NonNull QualificationRecyclerViewAdapter.ViewHolder holder, int position) {
 
-        if(!StaticSelectedData.selectedQualification.isEmpty() && position==arrayList.indexOf(StaticSelectedData.selectedQualification.get(0))){
+        if(!StaticSelectedData.selectedQualification.isEmpty() && position==arrayList.indexOf(StaticSelectedData.selectedQualification)){
             holder.btn.setTextColor(context.getResources().getColor(R.color.white));
             holder.btn.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.btn_bg_2));
         }
@@ -48,9 +45,7 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
         }
 
         holder.btn.setText(arrayList.get(position));
-        holder.btn.setOnClickListener(v -> {
-            onClickButton(holder.btn,holder.getAdapterPosition());
-        });
+        holder.btn.setOnClickListener(v -> onClickButton(holder.btn));
     }
 
     @Override
@@ -58,7 +53,7 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
         return arrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         AppCompatButton btn;
         public ViewHolder(@NonNull View itemView) {
@@ -67,16 +62,13 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
 
         }
     }
-    void  onClickButton(AppCompatButton btn,int pos){
+    void  onClickButton(AppCompatButton btn){
         String text=btn.getText().toString();
 
         if(StaticSelectedData.selectedQualification.contains(text)){
-            StaticSelectedData.selectedQualification.remove(text);
+            StaticSelectedData.selectedQualification="";
         }else{
-            if(!StaticSelectedData.selectedQualification.isEmpty()){
-                StaticSelectedData.selectedQualification.clear();
-            }
-            StaticSelectedData.selectedQualification.add(text);
+            StaticSelectedData.selectedQualification=text;
         }
         notifyDataSetChanged();
     }

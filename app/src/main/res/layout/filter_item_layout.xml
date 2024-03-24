@@ -2,13 +2,8 @@
 <androidx.appcompat.widget.AppCompatButton xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/btn_bg_1"
-    android:textColor="@color/black"
     android:id="@+id/filter_item"
-    android:layout_margin="5dp"
-    android:textSize="15sp"
-    android:padding="10dp"
-    android:text="hello">
+    android:text="hello"
+    style="@style/CustomFilterButtonStyle">
 
 </androidx.appcompat.widget.AppCompatButton>
