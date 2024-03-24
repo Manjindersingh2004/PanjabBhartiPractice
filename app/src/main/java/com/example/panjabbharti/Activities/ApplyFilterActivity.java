@@ -47,8 +47,9 @@ public class ApplyFilterActivity extends AppCompatActivity {
             return insets;
         });
 
-//        Intent i=getIntent();
-//        selectedDept=i.getStringExtra(Constant.SELECTED_DEPARTMENT);
+        Intent i=getIntent();
+        selectedDept=i.getStringExtra(Constant.SELECTED_DEPARTMENT);
+        Toast.makeText(this,selectedDept,Toast.LENGTH_SHORT).show();
 
         putDataInArrayList();
         binder.QualificationRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, LinearLayoutManager.HORIZONTAL));

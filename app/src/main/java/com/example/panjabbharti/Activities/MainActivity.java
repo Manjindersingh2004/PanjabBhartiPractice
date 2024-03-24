@@ -70,10 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 filteredList.add(newdepartment);
             }
         }
-        if(filteredList.isEmpty()){
-            Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
-        }else{
             newAdapter.setFilteredList(filteredList);
-        }
     }
 }
