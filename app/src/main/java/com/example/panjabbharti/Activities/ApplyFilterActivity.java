@@ -11,6 +11,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.panjabbharti.Adapters.AgeRecyclerViewAdapter;
+import com.example.panjabbharti.Adapters.PanjabiRecyclerViewAdapter;
 import com.example.panjabbharti.Adapters.QualificationRecyclerViewAdapter;
 import com.example.panjabbharti.R;
 import com.example.panjabbharti.StaticData.StaticSelectedData;
@@ -22,6 +24,8 @@ public class ApplyFilterActivity extends AppCompatActivity {
 
     ActivityApplyFilterBinding binder;
     ArrayList<String> qualificationList=new ArrayList<>();
+    ArrayList<String> ageList=new ArrayList<>();
+    ArrayList<String> panjabiList=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +41,16 @@ public class ApplyFilterActivity extends AppCompatActivity {
 
         putDataInArrayList();
         binder.QualificationRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, LinearLayoutManager.HORIZONTAL));
-
         QualificationRecyclerViewAdapter qualificationRecyclerViewAdapter=new QualificationRecyclerViewAdapter(qualificationList,getApplicationContext());
         binder.QualificationRecyclerView.setAdapter(qualificationRecyclerViewAdapter);
+
+        binder.AgeRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,LinearLayoutManager.HORIZONTAL));
+        AgeRecyclerViewAdapter ageRecyclerViewAdapter=new AgeRecyclerViewAdapter(ageList,getApplicationContext());
+        binder.AgeRecyclerView.setAdapter(ageRecyclerViewAdapter);
+
+        binder.PanjabiRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,LinearLayoutManager.HORIZONTAL));
+        PanjabiRecyclerViewAdapter panjabiRecyclerViewAdapter=new PanjabiRecyclerViewAdapter(panjabiList,getApplicationContext());
+        binder.PanjabiRecyclerView.setAdapter(panjabiRecyclerViewAdapter);
 
         clickListners();
     }
@@ -51,8 +62,14 @@ public class ApplyFilterActivity extends AppCompatActivity {
             if(StaticSelectedData.selectedQualification.isEmpty()){
                 Toast.makeText(this, "Please Select Qualification", Toast.LENGTH_SHORT).show();
             }
+            else if(StaticSelectedData.selectedAge.isEmpty()){
+                Toast.makeText(this, "Please Select Age", Toast.LENGTH_SHORT).show();
+            }
+            else if(StaticSelectedData.selectedPanjabi.isEmpty()){
+                Toast.makeText(this, "Please Select Panjabi is qualified or not", Toast.LENGTH_SHORT).show();
+            }
             else{
-                Toast.makeText(this, StaticSelectedData.selectedQualification.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, StaticSelectedData.selectedQualification.toString()+StaticSelectedData.selectedAge.toString()+StaticSelectedData.selectedPanjabi.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -70,5 +87,20 @@ public class ApplyFilterActivity extends AppCompatActivity {
         qualificationList.add("Professional Certification");
         qualificationList.add("Postgraduate Diploma");
         qualificationList.add("Technical Training Certification");
+
+
+        ageList.add("17");
+        ageList.add("18");
+        ageList.add("19");
+        ageList.add("20");
+        ageList.add("21");
+        ageList.add("22");
+        ageList.add("23");
+        ageList.add("24");
+        ageList.add("25");
+
+        panjabiList.add("Yes");
+        panjabiList.add("No");
+
     }
 }
