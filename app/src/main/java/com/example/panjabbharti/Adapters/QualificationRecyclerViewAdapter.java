@@ -10,7 +10,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.panjabbharti.R;
-import com.example.panjabbharti.StaticData.StaticSelectedData;
 
 import java.util.ArrayList;
 
@@ -24,6 +23,7 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
 
     ArrayList<String> arrayList;
     Context context;
+    public String selectedQualification="";
 
     @NonNull
     @Override
@@ -35,7 +35,7 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
     @Override
     public void onBindViewHolder(@NonNull QualificationRecyclerViewAdapter.ViewHolder holder, int position) {
 
-        if(!StaticSelectedData.selectedQualification.isEmpty() && position==arrayList.indexOf(StaticSelectedData.selectedQualification)){
+        if(!selectedQualification.isEmpty() && position==arrayList.indexOf(selectedQualification)){
             holder.btn.setTextColor(context.getResources().getColor(R.color.white));
             holder.btn.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.btn_bg_2));
         }
@@ -65,10 +65,10 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
     void  onClickButton(AppCompatButton btn){
         String text=btn.getText().toString();
 
-        if(StaticSelectedData.selectedQualification.contains(text)){
-            StaticSelectedData.selectedQualification="";
+        if(selectedQualification.contains(text)){
+            selectedQualification="";
         }else{
-            StaticSelectedData.selectedQualification=text;
+            selectedQualification=text;
         }
         notifyDataSetChanged();
     }
