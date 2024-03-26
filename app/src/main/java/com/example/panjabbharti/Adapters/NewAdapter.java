@@ -16,6 +16,7 @@ import com.example.panjabbharti.Activities.ApplyFilterActivity;
 import com.example.panjabbharti.Activities.MainActivity;
 import com.example.panjabbharti.Constants.Constant;
 import com.example.panjabbharti.R;
+import com.example.panjabbharti.Services.FetchQualifications;
 
 import java.util.List;
 
@@ -52,6 +53,10 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.ViewHolder> {
                 intent.putExtra(Constant.SELECTED_DEPARTMENT,department.get(holder.getAdapterPosition()));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
+                //Starting service to fetch qualifications according to department
+                Intent intent1 = new Intent(context, FetchQualifications.class);
+                intent1.putExtra(String.valueOf(R.string.deptName),department.get(position));
+                context.startService(intent1);
             }
         });
     }

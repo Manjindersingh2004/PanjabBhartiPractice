@@ -12,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.panjabbharti.Adapters.QualificationRecyclerViewAdapter;
@@ -24,16 +25,20 @@ import java.util.Calendar;
 
 public class ApplyFilterActivity extends AppCompatActivity {
 
-    ActivityApplyFilterBinding binder;
-    ArrayList<String> qualificationList=new ArrayList<>();
-    QualificationRecyclerViewAdapter qualificationRecyclerViewAdapter;
+     ActivityApplyFilterBinding binder;
+
+    //independent Static reference of recycler view  Needed for updating data in service
+
+    public static RecyclerView recyclerView;
+    public static ArrayList<String> qualificationList=new ArrayList<>();
+    public  QualificationRecyclerViewAdapter qualificationRecyclerViewAdapter;
     String[] monthNames = {
             "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
     };
     String selectedDob="";
     String selectedPanjabi="";
-    String selectedQualification="";
+    public static String selectedQualification="";
     String selectedDept="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +51,12 @@ public class ApplyFilterActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        recyclerView=binder.QualificationRecyclerView;
         Intent i=getIntent();
         selectedDept=i.getStringExtra(Constant.SELECTED_DEPARTMENT);
         Toast.makeText(this,selectedDept,Toast.LENGTH_SHORT).show();
 
-        putDataInArrayList();
+//        putDataInArrayList();
         binder.QualificationRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, LinearLayoutManager.HORIZONTAL));
         qualificationRecyclerViewAdapter=new QualificationRecyclerViewAdapter(qualificationList,getApplicationContext());
         binder.QualificationRecyclerView.setAdapter(qualificationRecyclerViewAdapter);
@@ -75,12 +80,13 @@ public class ApplyFilterActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please Select Panjabi is qualified or not", Toast.LENGTH_SHORT).show();
             }
             else{
-//                Intent i= new Intent(ApplyFilterActivity.this,MainActivity.class);
-//                i.putExtra(Constant.SELECTED_DEPARTMENT,selectedDept);
-//                i.putExtra(Constant.SELECTED_QUALIFICATION,selectedQualification);
-//                i.putExtra(Constant.SELECTED_PANJABI,selectedPanjabi);
-//                i.putExtra(Constant.SELECTED_DATE_OF_BIRTH,selectedDob);
-//                startActivity(i);
+                Intent i= new Intent(ApplyFilterActivity.this,JobsInfo.class);
+                i.putExtra(Constant.SELECTED_DEPARTMENT,selectedDept);
+                i.putExtra(Constant.SELECTED_QUALIFICATION,selectedQualification);
+                i.putExtra(Constant.SELECTED_PANJABI_VALUE,selectedPanjabi);
+                i.putExtra(Constant.SELECTED_DATE_OF_BIRTH,selectedDob);
+                startActivity(i);
+
                 Toast.makeText(this, selectedQualification+" "+selectedDob+" "+selectedPanjabi, Toast.LENGTH_SHORT).show();
             }
         });
@@ -158,17 +164,19 @@ public class ApplyFilterActivity extends AppCompatActivity {
         }
     }
 
-    void putDataInArrayList(){
-        qualificationList.add("10th");
-        qualificationList.add("High School Diploma");
-        qualificationList.add("Associate's Degree");
-        qualificationList.add("Bachelor's Degree");
-        qualificationList.add("Master's Degree");
-        qualificationList.add("Ph.D.");
-        qualificationList.add("GED (General Educational Development)");
-        qualificationList.add("Vocational Certificate");
-        qualificationList.add("Professional Certification");
-        qualificationList.add("Postgraduate Diploma");
-        qualificationList.add("Technical Training Certification");
-    }
+//    void putDataInArrayList(){
+//        qualificationList.add("10th");
+//        qualificationList.add("High School Diploma");
+//        qualificationList.add("Associate's Degree");
+//        qualificationList.add("Bachelor's Degree");
+//        qualificationList.add("B.Ed");
+//        qualificationList.add("Master's Degree");
+//        qualificationList.add("Ph.D.");
+//        qualificationList.add("GED (General Educational Development)");
+//        qualificationList.add("Vocational Certificate");
+//        qualificationList.add("Professional Certification");
+//        qualificationList.add("Postgraduate Diploma");
+//        qualificationList.add("Technical Training Certification");
+//    }
+
 }

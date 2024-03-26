@@ -23,7 +23,9 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
 
     ArrayList<String> arrayList;
     Context context;
-    public String selectedQualification="";
+
+    //Important to keep it static to maintain its reference after updation of QualificationList through service
+    public static String selectedQualification="";
 
     @NonNull
     @Override
@@ -59,7 +61,6 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             btn=itemView.findViewById(R.id.filter_item);
-
         }
     }
     void  onClickButton(AppCompatButton btn){
