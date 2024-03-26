@@ -21,6 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.panjabbharti.R;
 
 import java.net.URL;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -60,7 +61,9 @@ public class JobNotification extends AppCompatActivity {
         webUrl=receiver.getStringExtra(String.valueOf(R.string.key5_notifyData));
 
         //Calculate no. of days left
-        days= Period.between(LocalDate.now(),end).getDays();
+//        days= Period.between(LocalDate.now(),end).getDays();
+        days= Integer.parseInt(String.valueOf(Duration.between(LocalDate.now().atStartOfDay(),end.atStartOfDay()).toDays()));
+        Log.d("MYTAG", String.valueOf(days));
         Log.d("MYTAG", String.valueOf(LocalDate.now()));
         Log.d("MYTAG", String.valueOf(end));
         if (days<0){
