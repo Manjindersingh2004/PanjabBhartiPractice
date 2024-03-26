@@ -100,6 +100,7 @@ public class FetchData extends Service {
                                 //Updating Recycler View
                                 JobsInfo.jobsInfo.setAdapter(new JobsInfoRecycler(JobsInfo.context, JobsInfo.dataset));
                                 JobsInfo.progressBar.setVisibility(View.INVISIBLE);
+                                JobsInfo.noData.setVisibility(View.INVISIBLE);
                                 if (JobsInfo.dataset.isEmpty()) {
                                     JobsInfo.noData.setText(R.string.no_data);
                                     JobsInfo.noData.setVisibility(View.VISIBLE);
