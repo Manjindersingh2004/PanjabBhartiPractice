@@ -3,11 +3,11 @@ package com.example.panjabbharti.Activities;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.DatePicker;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -20,6 +20,7 @@ import com.example.panjabbharti.Constants.Constant;
 import com.example.panjabbharti.R;
 import com.example.panjabbharti.databinding.ActivityApplyFilterBinding;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -57,7 +58,7 @@ public class ApplyFilterActivity extends AppCompatActivity {
         Toast.makeText(this,selectedDept,Toast.LENGTH_SHORT).show();
 
 //        putDataInArrayList();
-        binder.QualificationRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, LinearLayoutManager.HORIZONTAL));
+        binder.QualificationRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.HORIZONTAL));
         qualificationRecyclerViewAdapter=new QualificationRecyclerViewAdapter(qualificationList,getApplicationContext());
         binder.QualificationRecyclerView.setAdapter(qualificationRecyclerViewAdapter);
 
@@ -69,7 +70,7 @@ public class ApplyFilterActivity extends AppCompatActivity {
         binder.backBtn.setOnClickListener(v -> finish());
 
         binder.applyBtn.setOnClickListener(v -> {
-            selectedQualification=qualificationRecyclerViewAdapter.selectedQualification;
+            selectedQualification= QualificationRecyclerViewAdapter.selectedQualification;
             if(selectedQualification.isEmpty()){
                 Toast.makeText(this, "Please Select Qualification", Toast.LENGTH_SHORT).show();
             }
@@ -93,9 +94,9 @@ public class ApplyFilterActivity extends AppCompatActivity {
 
         binder.ageButton.setOnClickListener(v -> {
             if(!binder.ageButton.getText().toString().equals("SELECT DOB")){
-                binder.ageButton.setTextColor(getResources().getColor(R.color.black));
-                binder.ageButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_1));
-                binder.ageButton.setText("SELECT DOB");
+                binder.ageButton.setTextColor(ContextCompat.getColor(this,R.color.black));
+                binder.ageButton.setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.btn_bg_1));
+                binder.ageButton.setText(R.string.select_dob);
                 selectedDob ="";
             }
             else{
@@ -108,9 +109,9 @@ public class ApplyFilterActivity extends AppCompatActivity {
                         this,
                         (view, year1, month1, dayOfMonth1) -> {
                             month1 += 1;
-                            binder.ageButton.setText(dayOfMonth1 +" "+monthNames[month1 -1]+" "+ year1);
-                            binder.ageButton.setTextColor(getResources().getColor(R.color.white));
-                            binder.ageButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_2));
+                            binder.ageButton.setText(MessageFormat.format("{0} {1} {2}", dayOfMonth1, monthNames[month1 - 1], year1));
+                            binder.ageButton.setTextColor(ContextCompat.getColor(this,R.color.white));
+                            binder.ageButton.setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.btn_bg_2));
 
                             String formattedDay = (dayOfMonth1 < 10) ? "0" + dayOfMonth1 : String.valueOf(dayOfMonth1);
                             String formattedMonth = (month1 < 10) ? "0" + month1 : String.valueOf(month1);
@@ -142,41 +143,26 @@ public class ApplyFilterActivity extends AppCompatActivity {
     }
     void setPunjabiSelectionSwap(int n){
         if(n==0){
-            binder.PunjabiYesBtn.setTextColor(getResources().getColor(R.color.black));
-            binder.PunjabiYesBtn.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_1));
-            binder.PunjabiNoBtn.setTextColor(getResources().getColor(R.color.black));
-            binder.PunjabiNoBtn.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_1));
+            binder.PunjabiYesBtn.setTextColor(ContextCompat.getColor(this,R.color.black));
+            binder.PunjabiYesBtn.setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.btn_bg_1));
+            binder.PunjabiNoBtn.setTextColor(ContextCompat.getColor(this,R.color.black));
+            binder.PunjabiNoBtn.setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.btn_bg_1));
             selectedPanjabi="";
         }
         else if(n==1){
-            binder.PunjabiYesBtn.setTextColor(getResources().getColor(R.color.white));
-            binder.PunjabiYesBtn.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_2));
-            binder.PunjabiNoBtn.setTextColor(getResources().getColor(R.color.black));
-            binder.PunjabiNoBtn.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_1));
+            binder.PunjabiYesBtn.setTextColor(ContextCompat.getColor(this,R.color.white));
+            binder.PunjabiYesBtn.setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.btn_bg_2));
+            binder.PunjabiNoBtn.setTextColor(ContextCompat.getColor(this,R.color.black));
+            binder.PunjabiNoBtn.setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.btn_bg_1));
             selectedPanjabi="YES";
         }
         else{
-            binder.PunjabiNoBtn.setTextColor(getResources().getColor(R.color.white));
-            binder.PunjabiNoBtn.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_2));
-            binder.PunjabiYesBtn.setTextColor(getResources().getColor(R.color.black));
-            binder.PunjabiYesBtn.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_1));
+            binder.PunjabiNoBtn.setTextColor(ContextCompat.getColor(this,R.color.white));
+            binder.PunjabiNoBtn.setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.btn_bg_2));
+            binder.PunjabiYesBtn.setTextColor(ContextCompat.getColor(this,R.color.black));
+            binder.PunjabiYesBtn.setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.btn_bg_1));
             selectedPanjabi="NO";
         }
     }
-
-//    void putDataInArrayList(){
-//        qualificationList.add("10th");
-//        qualificationList.add("High School Diploma");
-//        qualificationList.add("Associate's Degree");
-//        qualificationList.add("Bachelor's Degree");
-//        qualificationList.add("B.Ed");
-//        qualificationList.add("Master's Degree");
-//        qualificationList.add("Ph.D.");
-//        qualificationList.add("GED (General Educational Development)");
-//        qualificationList.add("Vocational Certificate");
-//        qualificationList.add("Professional Certification");
-//        qualificationList.add("Postgraduate Diploma");
-//        qualificationList.add("Technical Training Certification");
-//    }
 
 }

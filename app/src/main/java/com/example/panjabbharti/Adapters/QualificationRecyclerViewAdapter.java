@@ -1,5 +1,6 @@
 package com.example.panjabbharti.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.panjabbharti.R;
@@ -38,12 +40,12 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
     public void onBindViewHolder(@NonNull QualificationRecyclerViewAdapter.ViewHolder holder, int position) {
 
         if(!selectedQualification.isEmpty() && position==arrayList.indexOf(selectedQualification)){
-            holder.btn.setTextColor(context.getResources().getColor(R.color.white));
-            holder.btn.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.btn_bg_2));
+            holder.btn.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.btn.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.btn_bg_2));
         }
         else{
-            holder.btn.setTextColor(context.getResources().getColor(R.color.black));
-            holder.btn.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.btn_bg_1));
+            holder.btn.setTextColor(ContextCompat.getColor(context,R.color.black));
+            holder.btn.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.btn_bg_1));
         }
 
         holder.btn.setText(arrayList.get(position));
@@ -63,6 +65,7 @@ public class QualificationRecyclerViewAdapter extends RecyclerView.Adapter<Quali
             btn=itemView.findViewById(R.id.filter_item);
         }
     }
+    @SuppressLint("NotifyDataSetChanged")
     void  onClickButton(AppCompatButton btn){
         String text=btn.getText().toString();
 

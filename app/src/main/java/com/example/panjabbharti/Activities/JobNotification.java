@@ -9,9 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -30,6 +32,7 @@ public class JobNotification extends AppCompatActivity {
     LocalDate start,end;
 
     Button download,openWeb;
+    AppCompatButton back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class JobNotification extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        back=findViewById(R.id.backBtn_job_noti);
         postTitle=findViewById(R.id.postTitle);
         startTime=findViewById(R.id.startTime);
         endTime=findViewById(R.id.endTime);
@@ -74,10 +78,12 @@ public class JobNotification extends AppCompatActivity {
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(notifyUrl)).setTitle("Notification.pdf").setDescription("File is downloading").setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED).setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Notification.pdf");
 
             downloadManager.enqueue(request);
+            Toast.makeText(this, "Downloading...", Toast.LENGTH_LONG).show();
         });
         openWeb.setOnClickListener(v -> {
           //Redirect to website
             startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(webUrl)));
         });
+        back.setOnClickListener(v -> finish());
     }
 }

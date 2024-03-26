@@ -8,6 +8,7 @@
     <string name="key4_notifyData">NotificationURL</string>
     <string name="key5_notifyData">WebsiteURL</string>
     <string name="deptName">ReceivedDepartmentName\n</string>
+    <string name="select_dob">SELECT DOB</string>
 
 
 </resources>

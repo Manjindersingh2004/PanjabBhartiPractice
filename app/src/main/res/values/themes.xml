@@ -14,7 +14,7 @@
         <item name="android:layout_margin">5dp</item>
         <item name="android:textSize">15sp</item>
         <item name="android:padding">10dp</item>
-        <item name="fontFamily"></item>
+        <item name="fontFamily">@font/sfpro</item>
         <!-- Add any other customizations as needed -->
     </style>
 

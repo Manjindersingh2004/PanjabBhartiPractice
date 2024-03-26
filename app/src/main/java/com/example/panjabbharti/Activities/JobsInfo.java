@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -34,6 +35,7 @@ public class JobsInfo extends AppCompatActivity {
     public static TextView noData;
 
    public static ProgressBar progressBar;
+   AppCompatButton back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,7 @@ public class JobsInfo extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        back=findViewById(R.id.backBtn_job);
         context=this;
         jobsInfo=findViewById(R.id.jobsInfo);
         progressBar=findViewById(R.id.progressBar);
@@ -62,5 +65,8 @@ public class JobsInfo extends AppCompatActivity {
         //Setting recycler view adapter and layout
         jobsInfo.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         jobsInfo.setAdapter(adapter);
+
+
+        back.setOnClickListener(v -> finish());
     }
 }
