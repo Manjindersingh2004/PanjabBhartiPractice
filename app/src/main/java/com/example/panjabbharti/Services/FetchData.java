@@ -22,6 +22,7 @@ import com.example.panjabbharti.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -60,7 +61,10 @@ public class FetchData extends Service {
                 int c_day = c.get(Calendar.DAY_OF_MONTH);
                 dob = LocalDate.parse(intent.getStringExtra(Constant.SELECTED_DATE_OF_BIRTH_SERVICE));
                 LocalDate today = LocalDate.of(c_year, c_month, c_day);
-                age = Period.between(dob, today).getYears();
+                double age_temp =  Duration.between(dob.atStartOfDay(),today.atStartOfDay()).toDays();
+                Log.d("MYTAG", String.valueOf(age_temp));
+                age=(int)Math.ceil( (age_temp/(double) 365));
+                Log.d("MYTAG", String.valueOf(age));
                 pbiKnown = intent.getStringExtra(Constant.SELECTED_PANJABI_VALUE_SERVICE);
                 if (pbiKnown.equals("YES")) {
                     panjabiKnown = true;
