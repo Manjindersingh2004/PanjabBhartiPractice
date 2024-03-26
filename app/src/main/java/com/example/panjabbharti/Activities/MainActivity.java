@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         department=new ArrayList<>();
         newimage=new ArrayList<>();
         department.add("AGRICULTURE");
-        department.add("EDUCATION");
+        department.add("Education");
         department.add("HEALTH");
         department.add("POLICE");
         department.add("REVENUE");
