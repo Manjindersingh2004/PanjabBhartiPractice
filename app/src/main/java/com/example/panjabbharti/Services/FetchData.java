@@ -42,7 +42,6 @@ public class FetchData extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         JobsInfo.progressBar.setVisibility(View.VISIBLE);
         Log.d("MYTAG","Started");
-
         //Checking if internet is available
         ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(CONNECTIVITY_SERVICE);
         Network network = connectivityManager.getActiveNetwork();
@@ -121,7 +120,6 @@ public class FetchData extends Service {
             JobsInfo.noData.setVisibility(View.VISIBLE);
 
         }
-
         return Service.START_STICKY;
     }
 
