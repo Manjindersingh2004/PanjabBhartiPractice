@@ -1,6 +1,8 @@
 package com.example.panjabbharti.Activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     List<String> department;
     List<Integer> newimage;
     NewAdapter newAdapter;
-    FirebaseFirestore db;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         });
         datalist=findViewById(R.id.recylerview);
         searchView=findViewById(R.id.editText);
+        textView=findViewById(R.id.newtext);
         department=new ArrayList<>();
         newimage=new ArrayList<>();
         department.add("Punjab Subordinate Service Selection Board");
@@ -73,8 +76,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
             newAdapter.setFilteredList(filteredList);
+        if(filteredList.isEmpty()){
+            textView.setVisibility(View.VISIBLE);
+        }else{
+            textView.setVisibility(View.GONE);
+        }
     }
-//    public getDepartments(){
-//        db.collection()
-//    }
 }
