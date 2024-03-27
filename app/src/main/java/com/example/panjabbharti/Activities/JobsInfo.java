@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,7 @@ public class JobsInfo extends AppCompatActivity {
         noData=findViewById(R.id.noData);
         dataset = new ArrayList<>();
         adapter=new JobsInfoRecycler(this,dataset);
+        noData.setVisibility(View.INVISIBLE);
 
         //Getting intent values and passing further to service for comparison
         getIntentValues = getIntent();
