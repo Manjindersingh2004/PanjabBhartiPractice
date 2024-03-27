@@ -1,27 +1,29 @@
 package com.example.panjabbharti.Activities;
+
 import android.os.Bundle;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.panjabbharti.Adapters.NewAdapter;
 import com.example.panjabbharti.R;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 import java.util.List;
-import com.example.panjabbharti.R;
 public class MainActivity extends AppCompatActivity {
     RecyclerView datalist;
     androidx.appcompat.widget.SearchView searchView;
     List<String> department;
     List<Integer> newimage;
     NewAdapter newAdapter;
+    FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,16 +38,16 @@ public class MainActivity extends AppCompatActivity {
         searchView=findViewById(R.id.editText);
         department=new ArrayList<>();
         newimage=new ArrayList<>();
-        department.add("AGRICULTURE");
+        department.add("Punjab Subordinate Service Selection Board");
         department.add("Education");
-        department.add("HEALTH");
-        department.add("POLICE");
-        department.add("REVENUE");
-        newimage.add(R.drawable.agriculture);
-        newimage.add(R.drawable.learning);
-        newimage.add(R.drawable.health);
-        newimage.add(R.drawable.police);
+        department.add("Punjab Police");
+        department.add("Punjab State Power Corporation Limited");
+        department.add("Baba Farid University");
         newimage.add(R.drawable.revenue);
+        newimage.add(R.drawable.learning);
+        newimage.add(R.drawable.police);
+        newimage.add(R.drawable.electricity);
+        newimage.add(R.drawable.school);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -72,4 +74,7 @@ public class MainActivity extends AppCompatActivity {
         }
             newAdapter.setFilteredList(filteredList);
     }
+//    public getDepartments(){
+//        db.collection()
+//    }
 }
