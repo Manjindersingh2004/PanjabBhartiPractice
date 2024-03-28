@@ -41,6 +41,8 @@ public class FetchData extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         JobsInfo.progressBar.setVisibility(View.VISIBLE);
+        JobsInfo.noData.setVisibility(View.INVISIBLE);
+        JobsInfo.dataset.clear();;
         Log.d("MYTAG","Started");
         //Checking if internet is available
         ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(CONNECTIVITY_SERVICE);
