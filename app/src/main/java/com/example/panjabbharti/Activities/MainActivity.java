@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.panjabbharti.Adapters.NewAdapter;
 import com.example.panjabbharti.R;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         department.add("Punjab State Power Corporation Limited");
         department.add("Baba Farid University");
         newimage.add(R.drawable.revenue);
-        newimage.add(R.drawable.learning);
+        newimage.add(R.drawable.education);
         newimage.add(R.drawable.police);
         newimage.add(R.drawable.electricity);
         newimage.add(R.drawable.school);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PanjabBharti</string>
+    <string name="app_name">Panjab Bharti</string>
     <string name="no_data">Sorry , No Jobs Available At Moment</string>
     <string name="no_connection">Please Check Your Internet Connection</string>
     <string name="key1_notifyData">Title</string>

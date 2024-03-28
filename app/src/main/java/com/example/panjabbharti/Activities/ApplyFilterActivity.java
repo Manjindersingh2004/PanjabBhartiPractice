@@ -62,10 +62,10 @@ public class ApplyFilterActivity extends AppCompatActivity {
         qualificationRecyclerViewAdapter=new QualificationRecyclerViewAdapter(qualificationList,getApplicationContext());
         binder.QualificationRecyclerView.setAdapter(qualificationRecyclerViewAdapter);
 
-        clickListners();
+        clickActions();
     }
 
-    private void clickListners() {
+    private void clickActions() {
 
         binder.backBtn.setOnClickListener(v -> finish());
 
@@ -76,9 +76,10 @@ public class ApplyFilterActivity extends AppCompatActivity {
             }
             else if(selectedDob.isEmpty()){
                 Toast.makeText(this, "Please Select Dob", Toast.LENGTH_SHORT).show();
+
             }
             else if(selectedPanjabi.isEmpty()){
-                Toast.makeText(this, "Please Select Panjabi is qualified or not", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please Select Punjabi is qualified or not", Toast.LENGTH_SHORT).show();
             }
             else{
                 Intent i= new Intent(ApplyFilterActivity.this,JobsInfo.class);
