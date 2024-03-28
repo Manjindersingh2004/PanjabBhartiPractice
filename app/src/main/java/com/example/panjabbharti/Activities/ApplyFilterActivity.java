@@ -56,7 +56,7 @@ public class ApplyFilterActivity extends AppCompatActivity {
         Intent i=getIntent();
         selectedDept=i.getStringExtra(Constant.SELECTED_DEPARTMENT);
         Toast.makeText(this,selectedDept,Toast.LENGTH_SHORT).show();
-
+        QualificationRecyclerViewAdapter.selectedQualification="";
 //        putDataInArrayList();
         binder.QualificationRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.HORIZONTAL));
         qualificationRecyclerViewAdapter=new QualificationRecyclerViewAdapter(qualificationList,getApplicationContext());
